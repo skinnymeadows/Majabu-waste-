@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Majabu Waste Management — Waste &amp; Sanitation Consultancy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12190F;
+    --paper:#F1EDE1;
+    --paper-dim:#E8E2D1;
+    --forest:#1F3D2B;
+    --forest-deep:#152B1D;
+    --moss:#5C7A5E;
+    --ochre:#B9822F;
+    --ochre-soft:#D9B676;
+    --line: rgba(18,25,15,0.14);
+    --line-light: rgba(241,237,225,0.22);
+    --max: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 40px;}
+  @media(max-width:720px){.wrap{padding:0 22px;}}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(241,237,225,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0;
+  }
+  .wordmark{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:600; font-size:20px;
+    color:var(--forest-deep);
+    text-decoration:none;
+  }
+  .wordmark svg{flex:none;}
+  .wordmark .sub{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px; font-weight:400; letter-spacing:0.03em;
+    color:var(--moss); display:block; margin-top:1px;
+  }
+  nav.links{display:flex; gap:34px; align-items:center;}
+  nav.links a{
+    font-size:14.5px; text-decoration:none; color:var(--ink);
+    border-bottom:1px solid transparent; padding-bottom:2px;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  nav.links a:hover{border-color:var(--ochre); color:var(--forest-deep);}
+  .cta-btn{
+    font-family:'IBM Plex Sans', sans-serif; font-size:14px; font-weight:500;
+    background:var(--forest-deep); color:var(--paper);
+    padding:11px 20px; border-radius:2px; text-decoration:none;
+    border:1px solid var(--forest-deep);
+    transition:background .15s ease, color .15s ease;
+    white-space:nowrap;
+  }
+  .cta-btn:hover{background:transparent; color:var(--forest-deep);}
+  .menu-toggle{display:none;}
+  @media(max-width:880px){
+    nav.links{display:none;}
+    .menu-toggle{display:block; background:none; border:1px solid var(--line); padding:8px 12px; font-family:'IBM Plex Mono',monospace; font-size:12px; cursor:pointer;}
+  }
+
+  .hero{
+    background:#FFFFFF;
+    color:var(--ink);
+    padding:96px 0 70px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative; z-index:2;}
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; color:var(--ochre);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:28px;
+    opacity:0; animation:riseIn .7s ease-out forwards;
+  }
+  .hero-eyebrow .rule{width:32px; height:1px; background:var(--ochre);}
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 64px);
+    line-height:1.06;
+    max-width:15ch;
+    color:var(--forest-deep);
+    opacity:0; animation:riseIn .8s ease-out .1s forwards;
+  }
+  .hero .lede{
+    margin-top:26px; max-width:52ch;
+    font-size:18px; color:rgba(18,25,15,0.68);
+    opacity:0; animation:riseIn .8s ease-out .22s forwards;
+  }
+  .hero-actions{
+    margin-top:38px; display:flex; gap:16px; flex-wrap:wrap; align-items:center;
+    opacity:0; animation:riseIn .8s ease-out .32s forwards;
+  }
+  .hero-actions .ghost{
+    font-size:14.5px; text-decoration:none; color:var(--forest-deep);
+    border-bottom:1px solid rgba(18,25,15,0.3); padding-bottom:2px;
+  }
+  @keyframes riseIn{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+
+  .hero-stats{
+    margin-top:64px;
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+    padding-top:26px;
+  }
+  .hero-stats div{padding-right:20px;}
+  .hero-stats .num{
+    font-family:'Fraunces', serif; font-weight:500; font-size:30px; color:var(--forest-deep);
+    display:block;
+  }
+  .hero-stats .lbl{font-size:13px; color:rgba(18,25,15,0.6); margin-top:4px; display:block;}
+  @media(max-width:720px){
+    .hero-stats{grid-template-columns:repeat(2,1fr); row-gap:26px;}
+  }
+
+  section{padding:88px 0;}
+  @media(max-width:720px){section{padding:60px 0;}}
+  .section-head{
+    display:grid; grid-template-columns:1fr 1.6fr; gap:60px;
+    margin-bottom:52px;
+    border-top:1px solid var(--line); padding-top:22px;
+  }
+  .section-head .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--moss);
+  }
+  .section-head h2{font-size:clamp(26px,3vw,36px); max-width:18ch;}
+  @media(max-width:800px){.section-head{grid-template-columns:1fr;}}
+
+  .phases{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    border-top:1px solid var(--line);
+  }
+  .phase{
+    padding:30px 26px 30px 0;
+    border-right:1px solid var(--line);
+    position:relative;
+  }
+  .phase:last-child{border-right:none;}
+  .phase .idx{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ochre);
+    display:block; margin-bottom:18px;
+  }
+  .phase h3{font-size:20px; margin-bottom:10px;}
+  .phase p{font-size:14.5px; color:rgba(18,25,15,0.7);}
+  @media(max-width:880px){
+    .phases{grid-template-columns:1fr 1fr; row-gap:8px;}
+    .phase{border-right:none; border-bottom:1px solid var(--line); padding:26px 20px 26px 0;}
+  }
+  @media(max-width:520px){.phases{grid-template-columns:1fr;}}
+
+  .services{border-top:1px solid var(--line);}
+  .service-row{
+    display:grid; grid-template-columns:0.5fr 2fr 2.6fr;
+    gap:30px; padding:26px 0; border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .service-row .num{font-family:'IBM Plex Mono', monospace; color:var(--moss); font-size:14px; padding-top:3px;}
+  .service-row h3{font-size:19px;}
+  .service-row p{font-size:14.5px; color:rgba(18,25,15,0.68); max-width:52ch;}
+  @media(max-width:760px){
+    .service-row{grid-template-columns:1fr; gap:8px;}
+  }
+
+  .why-grid{
+    display:grid; grid-template-columns:1.1fr 1fr; gap:60px;
+  }
+  @media(max-width:880px){.why-grid{grid-template-columns:1fr;}}
+  .why-list{margin-top:8px;}
+  .why-item{
+    display:flex; gap:18px; padding:20px 0; border-bottom:1px solid var(--line);
+  }
+  .why-item:first-child{border-top:1px solid var(--line);}
+  .why-item .mk{color:var(--ochre); font-family:'IBM Plex Mono',monospace; font-size:13px; padding-top:2px;}
+  .why-item h4{font-size:17px; margin-bottom:6px;}
+  .why-item p{font-size:14px; color:rgba(18,25,15,0.68);}
+  blockquote{
+    font-family:'Fraunces', serif; font-weight:500; font-style:italic;
+    font-size:24px; line-height:1.45; color:var(--forest-deep);
+    border-left:2px solid var(--ochre); padding-left:26px;
+    max-width:36ch;
+  }
+  blockquote cite{
+    display:block; margin-top:20px; font-family:'IBM Plex Sans',sans-serif;
+    font-style:normal; font-size:13.5px; color:rgba(18,25,15,0.6);
+  }
+
+  .contact{
+    background:var(--paper-dim); color:var(--ink);
+    border-top:1px solid var(--line);
+  }
+  .contact-grid{
+    display:grid; grid-template-columns:1.3fr 1fr; gap:60px; align-items:end;
+  }
+  @media(max-width:880px){.contact-grid{grid-template-columns:1fr; align-items:start;}}
+  .contact h2{color:var(--forest-deep); font-size:clamp(28px,4vw,44px); max-width:14ch;}
+  .contact p.lede{color:rgba(18,25,15,0.68); font-size:16.5px; max-width:44ch; margin-top:18px;}
+  .contact-form{display:flex; flex-direction:column; gap:14px;}
+  .contact-form input, .contact-form textarea{
+    background:transparent; border:none; border-bottom:1px solid rgba(18,25,15,0.25);
+    color:var(--ink); font-family:'IBM Plex Sans',sans-serif; font-size:15px;
+    padding:10px 2px; outline:none;
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder{color:rgba(18,25,15,0.4);}
+  .contact-form input:focus, .contact-form textarea:focus{border-bottom-color:var(--ochre);}
+  .contact-form button{
+    margin-top:10px; align-self:flex-start;
+    background:var(--forest-deep); color:var(--paper); border:none;
+    font-family:'IBM Plex Sans',sans-serif; font-weight:500; font-size:14.5px;
+    padding:13px 24px; cursor:pointer; border-radius:2px;
+    transition:background .15s ease;
+  }
+  .contact-form button:hover{background:var(--forest);}
+  .contact-form button:focus-visible, a:focus-visible, .cta-btn:focus-visible{
+    outline:2px solid var(--ochre); outline-offset:2px;
+  }
+  .contact-people{
+    display:flex; gap:40px; margin-top:40px; padding-top:28px;
+    border-top:1px solid rgba(18,25,15,0.14); flex-wrap:wrap;
+  }
+  .cp-name{font-family:'Fraunces', serif; font-size:17px; color:var(--forest-deep);}
+  .cp-role{font-size:13px; color:rgba(18,25,15,0.6); margin-top:3px;}
+  .cp-phone{font-family:'IBM Plex Mono', monospace; font-size:13.5px; color:var(--ochre); margin-top:8px;}
+  .cp-label{color:rgba(18,25,15,0.55); margin-right:4px;}
+
+  footer.site{
+    background:#FFFFFF; color:rgba(18,25,15,0.55);
+    border-top:1px solid var(--line);
+    padding:26px 0;
+    font-size:13px;
+  }
+  footer.site .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="wordmark" href="#top">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <path d="M15 3.5c5.5 2.2 9 6.6 9 11.5 0 3.9-4 7-9 7s-9-3.1-9-7c0-1.7.7-3.3 2-4.8" stroke="#B9822F" stroke-width="1.6" fill="none"/>
+        <path d="M20.5 10.2c1.2 1.4 1.9 3 1.9 4.8" stroke="#1F3D2B" stroke-width="1.6" fill="none"/>
+        <circle cx="15" cy="15" r="2.1" fill="#1F3D2B"/>
+      </svg>
+      <span>MAJABU<span class="sub">WASTE MANAGEMENT</span></span>
+    </a>
+    <nav class="links">
+      <a href="#approach">Approach</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Majabu</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="cta-btn" href="#contact">Request a consultation</a>
+  </div>
+</header>
+
+<div id="top"></div>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow"><span class="rule"></span> Waste &amp; sanitation systems consultancy — Johannesburg, South Africa</div>
+    <h1>Waste is a systems problem before it is a truck problem.</h1>
+    <p class="lede">Majabu advises municipalities, developers and private estates on how to plan, finance and operate waste collection and recycling systems that hold up against the region's regulatory, logistical and financial realities.</p>
+    <div class="hero-actions">
+      <a class="cta-btn" href="#contact">Request a consultation</a>
+      <a class="ghost" href="#approach">See how we work →</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="num">4</span><span class="lbl">engagement phases, one accountable team</span></div>
+      <div><span class="num">3</span><span class="lbl">core practice areas — municipal, property, industrial</span></div>
+      <div><span class="num">100%</span><span class="lbl">regulatory pathway confirmed before capital is spent</span></div>
+      <div><span class="num">360°</span><span class="lbl">from diagnosis through to operations handover</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">01 — How we work</div>
+      <h2>An engagement built in four stages, not one report.</h2>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <span class="idx">01</span>
+        <h3>Diagnose</h3>
+        <p>We map current waste flows, tonnage, concession boundaries and stakeholder positions before proposing anything — so recommendations are grounded in what's actually there.</p>
+      </div>
+      <div class="phase">
+        <span class="idx">02</span>
+        <h3>Design</h3>
+        <p>Route plans, bin specifications, fleet sizing and facility layouts, sized to the district and to what a client can realistically staff and finance.</p>
+      </div>
+      <div class="phase">
+        <span class="idx">03</span>
+        <h3>Navigate</h3>
+        <p>We work through the regulatory path — licensing, municipal permitting, business registration — before capital is committed, not after.</p>
+      </div>
+      <div class="phase">
+        <span class="idx">04</span>
+        <h3>Operate</h3>
+        <p>Handover into operation, with staffing plans, billing systems and a first-90-days performance review built in from the start.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">02 — What we do</div>
+      <h2>Advisory work across the full waste system.</h2>
+    </div>
+
+    <div class="service-row">
+      <div class="num">01</div>
+      <h3>Regulatory &amp; concession strategy</h3>
+      <p>Reading the exclusivity and licensing landscape correctly before a client spends on trucks or bins — including where private, complementary, or pilot models are viable.</p>
+    </div>
+    <div class="service-row">
+      <div class="num">02</div>
+      <h3>Collection system design</h3>
+      <p>Sub-sector routing, pickup frequency, and bin specification for solid waste and recyclables, sized to household density and property type.</p>
+    </div>
+    <div class="service-row">
+      <div class="num">03</div>
+      <h3>Fleet &amp; facility planning</h3>
+      <p>Vehicle sizing, depot and wash-yard layout, and equipment procurement plans that match actual route volumes rather than generic assumptions.</p>
+    </div>
+    <div class="service-row">
+      <div class="num">04</div>
+      <h3>Recycling &amp; materials recovery</h3>
+      <p>Source-separation programs and sorting-point design that keep recoverable material out of landfill without adding cost residents won't pay.</p>
+    </div>
+    <div class="service-row">
+      <div class="num">05</div>
+      <h3>Financial &amp; tariff modelling</h3>
+      <p>Subscription pricing, revenue projections, and start-up budgets built line by line — registration, labour, equipment — not rounded estimates.</p>
+    </div>
+    <div class="service-row">
+      <div class="num">06</div>
+      <h3>Municipal &amp; PPP advisory</h3>
+      <p>Support for local authorities structuring pilot zones, sub-contracts, or public-private partnerships in sanitation.</p>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">03 — Why Majabu</div>
+      <h2>Built for how waste actually gets regulated and run here.</h2>
+    </div>
+    <div class="why-grid">
+      <blockquote>
+        "The failure mode in this sector is rarely the collection plan. It's building the plan without first understanding who is legally allowed to collect, and where."
+        — Majabu Waste Management, engagement principle
+      </blockquote>
+      <div class="why-list">
+        <div class="why-item">
+          <span class="mk">—</span>
+          <div><h4>Local regulatory fluency</h4><p>Direct experience with municipal waste licensing, business registration, and permitting processes — not a generalist consultancy applying an outside template.</p></div>
+        </div>
+        <div class="why-item">
+          <span class="mk">—</span>
+          <div><h4>Numbers you can act on</h4><p>Budgets and pricing built bottom-up from real supplier and labour costs, not placeholder percentages.</p></div>
+        </div>
+        <div class="why-item">
+          <span class="mk">—</span>
+          <div><h4>One team, start to finish</h4><p>The people who diagnose the system are the same people who help you operate it — no handoff between strategy and delivery.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <h2>Let's look at your waste system.</h2>
+        <p class="lede">Tell us about the district, site, or authority you're working with. We'll reply with what we'd need to see before proposing an approach.</p>
+        <div class="contact-people">
+          <div class="contact-person">
+            <p class="cp-name">Nickson Bwalya</p>
+            <p class="cp-role">General Manager</p>
+            <p class="cp-phone"><span class="cp-label">Phone:</span> +27 74 536 6795</p>
+            <p class="cp-phone"><span class="cp-label">Email:</span> n.bwalya@majabuwaste.com</p>
+          </div>
+          <div class="contact-person">
+            <p class="cp-name">Joel Mukendi</p>
+            <p class="cp-role">Operations Manager</p>
+            <p class="cp-phone"><span class="cp-label">Phone:</span> +1 480 707 7669</p>
+            <p class="cp-phone"><span class="cp-label">Email:</span> j.mukendi@majabuwaste.com</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Message noted';">
+        <input type="text" placeholder="Name" required>
+        <input type="text" placeholder="Organisation" >
+        <input type="email" placeholder="Email" required>
+        <textarea rows="3" placeholder="What are you working on?"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 Majabu Waste Management (Pty) Ltd — Johannesburg, South Africa</span>
+    <span>Waste &amp; sanitation systems consultancy</span>
+  </div>
+</footer>
+
+</body>
+</html>
