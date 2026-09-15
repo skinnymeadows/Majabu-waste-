@@ -85,6 +85,15 @@
     white-space:nowrap;
   }
   .cta-btn:hover{background:transparent; color:var(--forest-deep);}
+  .nav-right{display:flex; align-items:center; gap:20px;}
+  .lang-switch{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px;
+    display:flex; align-items:center; gap:6px; color:rgba(18,25,15,0.45);
+  }
+  .lang-switch a{text-decoration:none; color:rgba(18,25,15,0.45); transition:color .15s ease;}
+  .lang-switch a.active{color:var(--forest-deep); font-weight:600;}
+  .lang-switch a:hover{color:var(--ochre);}
+  .lang-switch .sep{color:rgba(18,25,15,0.3);}
   .menu-toggle{display:none;}
   @media(max-width:880px){
     nav.links{display:none;}
@@ -281,7 +290,14 @@
       <a href="#why">Why Majabu</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="cta-btn" href="#contact">Request a consultation</a>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <a href="/" class="active">EN</a>
+        <span class="sep">/</span>
+        <a href="/fr/">FR</a>
+      </div>
+      <a class="cta-btn" href="#contact">Request a consultation</a>
+    </div>
   </div>
 </header>
 
